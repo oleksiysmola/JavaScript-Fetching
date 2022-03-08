@@ -1,0 +1,1 @@
+Here I practice a few exercises relating to async and fetch in JavaScript.
