@@ -10,14 +10,24 @@ const loadData = function(){
             // Obtain list element from html file
             const list = document.querySelector("#launch-list");
 
-            // Get name and date of launch
+            // Get details from launches
             const launchNames = launches.map(launch => launch.name);
             const launchDates = launches.map(launch => launch.date_local);
-            
+            const launchArticles = launches.map(launch => launch.links.article);
             // Loop over all launches
             for (i = 0; i < launches.length; i++){
+                // Creates list element
                 const listItem = document.createElement("li");
-                listItem.innerText = launchNames[i] + ": " + launchDates[i];
+                // Creates html element for link
+                const articleLink = document.createElement("a");
+                // Sets link properties
+                articleLink.href = launchArticles[i];
+                articleLink.innerText = launchArticles[i];
+                // Sets list item text
+                listItem.innerText = launchNames[i] + ", " + launchDates[i] + ", ";
+                // Append link to end of list item
+                listItem.appendChild(articleLink);
+                // Append list item to list
                 list.appendChild(listItem);
             }
             
